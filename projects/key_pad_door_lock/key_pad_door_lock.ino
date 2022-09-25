@@ -29,9 +29,9 @@ void setup() {
   pinMode(vcc, OUTPUT);
 
 
-  lcd.print("Bruce's Lock Box");
+  lcd.print("    One lock    ");
   lcd.setCursor(0, 1);
-  lcd.print("   Keep Out!    ");
+  lcd.print("to rule them all");
   delay(3000);
   lcd.clear();
   lcd.print("Speak friend,");
@@ -40,7 +40,7 @@ void setup() {
   initialpassword();
 }
 void loop() {
-  digitalWrite(relay_pin, HIGH);
+  digitalWrite(relay_pin, LOW);
 
   key_pressed = keypad_key.getKey();
   if (key_pressed == '#')
@@ -58,13 +58,13 @@ void loop() {
       lcd.print("Keep it secret!");
       lcd.setCursor(0, 1);
       lcd.print("Keep it safe!");
-      digitalWrite(relay_pin, LOW);
+      digitalWrite(relay_pin, HIGH);
       delay(3000);
       lcd.setCursor(0, 0);
       lcd.clear();
       lcd.print("Press #");
       lcd.setCursor(0, 1);
-      lcd.print("to change pass");
+      lcd.print("to change pass.");
       delay(3000);
       lcd.clear();
       lcd.print("Speak friend,");
@@ -72,7 +72,7 @@ void loop() {
       lcd.print("and enter:");
       i = 0;
     } else {
-      digitalWrite(relay_pin, HIGH);
+      digitalWrite(relay_pin, LOW);
       lcd.clear();
       lcd.print("Your words have");
       lcd.setCursor(0, 1);
@@ -92,7 +92,7 @@ void loop() {
 void change() {
   int j = 0;
   lcd.clear();
-  lcd.print("Current Password");
+  lcd.print("Current Password:");
   lcd.setCursor(0, 1);
   while (j < 4) {
     char key = keypad_key.getKey();
@@ -108,7 +108,7 @@ void change() {
     lcd.clear();
     lcd.print("      YOU!      ");
     delay(2000);
-    lcd.clear();
+    lcd.setCursor(0, 1);
     lcd.print("   SHALL NOT!   ");
     delay(2000);
     lcd.clear();
@@ -142,7 +142,7 @@ void change() {
   lcd.clear();
   lcd.print("Speak friend,");
   lcd.setCursor(0, 1);
-  lcd.print("and enter.");
+  lcd.print("and enter:");
   key_pressed = 0;
 }
 
